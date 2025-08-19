@@ -1,0 +1,54 @@
+.form {
+    width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.form__legend {
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px;
+    display: block;
+    text-align: center;
+}
+
+.form__button {
+    background-color: teal;
+    font-family: 'Lato', sans-serif;
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form__button:hover {
+    border-color: coral;
+}
+
+.form__button:focus {
+    border: 3px solid crimson;
+}
+
+.form__labelText {
+    display: inline-block;
+    margin-right: 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.form__field {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form__field:required {
+    border-color: rgb(78, 74, 99);
+}
+
+.form__field:invalid {
+    background-color: rgb(231, 225, 212);
+}
