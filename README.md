@@ -1,8 +1,8 @@
 # currency-converter-react
-
+## ![Preview](public/animation.gif) 
 
 ## Demo
-
+https://annaczerwonka.github.io/currency-converter-react/
 
 ## Description
 The topic of this page is a currency converter. At the center of the page, there is a form window containing two elements:
@@ -14,13 +14,15 @@ The topic of this page is a currency converter. At the center of the page, there
 After filling out the form, click the “Convert” button to get the amount in PLN.
 
 
-## Technoligies
-- HTML, 
-- CSS,
-- JavaScript,
-- React: Create-react-app
-
-
+## Technologies
+- HTML
+- CSS
+- JavaScript (ES6+)
+- JSX (JavaScript XML)
+- React.js
+- Create React App (Webpack, Babel, ESLint, PostCSS, CSS Loader & Style Loader)
+- Flexbox
+- CSS Grid
 
 # Getting Started with Create React App
 
