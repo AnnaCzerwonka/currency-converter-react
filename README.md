@@ -17,15 +17,13 @@ Additionally, at the top of the page, a live clock displays the current date and
 
 ## Technologies
 - HTML
-- CSS
+- CSS (Flexbox, Grid)
 - JavaScript (ES6+)
 - JSX (JavaScript XML)
 - React.js
-- React Hooks (useState, useEffect)
-- JavaScript Date API (toLocaleString)
-- Create React App (Webpack, Babel, ESLint, PostCSS, CSS Loader & Style Loader)
-- Flexbox
-- CSS Grid
+- React Hooks (`useState`, `useEffect`)
+- JavaScript Date API (`toLocaleString`)
+- Create React App (Webpack, Babel, ESLint, PostCSS, CSS Loader and Style Loader)
 
 # Getting Started with Create React App
 
