@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import "./style.css";
 import { currencies } from "../currencies";
 import Result from "./Result";
+import {
+    FormWrapper,
+    Fieldset,
+    Legend,
+    LabelText,
+    InputField,
+    SelectField,
+    Button
+} from "./styled";
 
 function Form() {
     const [amount, setAmount] = useState("");
@@ -31,15 +39,14 @@ function Form() {
     };
 
     return (
-        <form className="form" onSubmit={onSubmit}>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">Kalkulator walut</legend>
+        <FormWrapper onSubmit={onSubmit}>
+            <Fieldset>
+                <Legend>Kalkulator walut</Legend>
 
                 <p>
                     <label>
-                        <span className="form__labelText">Kwota w zł:</span>
-                        <input
-                            className="form__field"
+                        <LabelText>Kwota w zł:</LabelText>
+                        <InputField
                             placeholder="Wpisz kwotę w zł"
                             type="number"
                             step="0.01"
@@ -53,9 +60,8 @@ function Form() {
 
                 <p>
                     <label>
-                        <span className="form__labelText">Waluta:</span>
-                        <select
-                            className="form__field"
+                        <LabelText>Waluta:</LabelText>
+                        <SelectField
                             value={currency}
                             onChange={(e) => setCurrency(e.target.value)}
                         >
@@ -64,16 +70,17 @@ function Form() {
                                     {currency.name}
                                 </option>
                             ))}
-                        </select>
+                        </SelectField>
                     </label>
                 </p>
 
-                <button className="form__button">Przelicz</button>
+                <Button>Przelicz</Button>
 
                 <Result result={result} />
-            </fieldset>
-        </form>
+            </Fieldset>
+        </FormWrapper>
     );
 }
 
 export default Form;
+

@@ -1,8 +1,8 @@
-import "./style.css";
+import { Wrapper } from "./styled";
 
 function Result({ result }) {
     return (
-        <p className="result">
+        <Wrapper>
             {result === null ? (
                 "Wynik: N/A"
             ) : typeof result === "string" ? (
@@ -10,10 +10,12 @@ function Result({ result }) {
             ) : (
                 <>
                     Wynik: {result.amount.toFixed(2)} zł ={" "}
-                    <strong>{result.finalResult.toFixed(2)} {result.currency}</strong>
+                    <strong>
+                        {result.finalResult.toFixed(2)} {result.currency}
+                    </strong>
                 </>
             )}
-        </p>
+        </Wrapper>
     );
 }
 
