@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { currencies } from "../currencies";
+import React, { useState, useEffect } from "react";
 import Result from "./Result";
+import { useRatesData } from "./useRatesData";
 import {
     FormWrapper,
     Fieldset,
@@ -8,18 +8,24 @@ import {
     LabelText,
     InputField,
     SelectField,
-    Button
+    Button,
+    Loading,
+    Failure,
+    Info
 } from "./styled";
 
 function Form() {
+    const ratesData = useRatesData();
     const [amount, setAmount] = useState("");
-    const [currency, setCurrency] = useState(currencies[0].short);
+    const [currency, setCurrency] = useState("");
     const [result, setResult] = useState(null);
 
-    const calculateResult = (amount, currency) => {
-        const rate = currencies.find(({ short }) => short === currency).rate;
-        return amount / rate;
-    };
+    useEffect(() => {
+        if (ratesData.state === "success") {
+            const firstCurrency = Object.keys(ratesData.rates)[0] || "";
+            setCurrency(firstCurrency);
+        }
+    }, [ratesData]);
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -29,7 +35,12 @@ function Form() {
             return;
         }
 
-        const finalResult = calculateResult(amount, currency);
+        if (!ratesData.rates[currency]) {
+            setResult("Wybierz walutę");
+            return;
+        }
+
+        const finalResult = amount / ratesData.rates[currency].value;
 
         setResult({
             amount: +amount,
@@ -37,6 +48,22 @@ function Form() {
             finalResult,
         });
     };
+
+    if (ratesData.state === "loading") {
+        return (
+            <Loading>
+                Sekundka... <br /> Ładuję kursy walut z currencyapi.com
+            </Loading>
+        );
+    }
+
+    if (ratesData.state === "error") {
+        return (
+            <Failure>
+                Hmm... Coś poszło nie tak. Sprawdź, czy masz połączenie z internetem
+            </Failure>
+        );
+    }
 
     return (
         <FormWrapper onSubmit={onSubmit}>
@@ -65,9 +92,9 @@ function Form() {
                             value={currency}
                             onChange={(e) => setCurrency(e.target.value)}
                         >
-                            {currencies.map((currency) => (
-                                <option key={currency.short} value={currency.short}>
-                                    {currency.name}
+                            {Object.keys(ratesData.rates || {}).map((code) => (
+                                <option key={code} value={code}>
+                                    {code}
                                 </option>
                             ))}
                         </SelectField>
@@ -77,10 +104,17 @@ function Form() {
                 <Button>Przelicz</Button>
 
                 <Result result={result} />
+
+                {ratesData.date && (
+                    <Info>
+                        Kursy pobrano z <a href="https://currencyapi.com">currencyapi.com</a>
+                        <br />
+                        Data: {new Date(ratesData.date).toLocaleDateString("pl-PL", { day: "2-digit", month: "long", year: "numeric" })}
+                    </Info>
+                )}
             </Fieldset>
         </FormWrapper>
     );
 }
 
 export default Form;
-

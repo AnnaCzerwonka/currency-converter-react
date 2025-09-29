@@ -1,5 +1,5 @@
 # currency-converter-react
-## ![Preview](public/10.gif) 
+## ![Preview](public/12.gif) 
 
 ## Demo
 https://annaczerwonka.github.io/currency-converter-react/
@@ -11,7 +11,9 @@ The topic of this page is a currency converter. At the center of the page, there
 
 - a field to enter the amount in the selected currency
 
-After filling out the form, click the “Convert” button to get the amount in PLN.
+After filling out the form, click the “Convert” button to get the equivalent amount in the selected currency relative to PLN.
+The exchange rates are fetched from an external API and are current as of the date they were retrieved.
+If there is a problem fetching the data, the user sees a message suggesting to check their internet connection.
 Additionally, at the top of the page, a live clock displays the current date and time, updating every second. 
 
 
@@ -21,10 +23,12 @@ Additionally, at the top of the page, a live clock displays the current date and
 - JavaScript (ES6+)
 - JSX (JavaScript XML)
 - React.js
-- React Hooks (`useState`, `useEffect`, `useCurrentDate`)
+- React Hooks (`useState`, `useEffect`, `useCurrentDate`, `useRatesData`)
 - JavaScript Date API (`toLocaleString`)
 - Styled-components
-- Create React App (Webpack, Babel, ESLint, PostCSS, CSS Loader and Style Loader)
+- Create React App (Webpack, Babel, ESLint, PostCSS, CSS Loader and Style   
+  Loader)
+- External API for currency rates
 
 # Getting Started with Create React App
 

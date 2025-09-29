@@ -18,10 +18,10 @@ export const Legend = styled.legend`
   background-color: ${({ theme }) => theme.colors.teal};
   color: ${({ theme }) => theme.colors.white};
   border-radius: 5px;
-  width: 80%;
   padding: 10px;
-  display: block;
+  display: inline-block;
   text-align: center;
+  font-weight: bold;
 `;
 
 export const LabelText = styled.span`
@@ -67,4 +67,18 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.colors.white};
     outline: none;
   }
+`;
+
+export const Loading = styled.p`
+  color: ${({ theme }) => theme.colors.teal};
+`;
+
+export const Failure = styled.p`
+  color: ${({ theme }) => theme.colors.crimson};
+`;
+
+export const Info = styled.p`
+  font-size: 0.8em;
+  margin-top: 10px;
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;

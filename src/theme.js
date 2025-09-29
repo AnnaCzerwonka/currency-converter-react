@@ -6,7 +6,8 @@ export const theme = {
         crimson: "#DC143C",
         coral: "#FF7F50",
         requiredBorder: "#4E4A63",
-        invalidBackground: "#E7E1D4"
+        invalidBackground: "#E7E1D4",
+        textSecondary: "#555"
     }
 };
 
