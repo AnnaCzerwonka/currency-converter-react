@@ -22,8 +22,7 @@ function Form() {
 
     useEffect(() => {
         if (ratesData.state === "success") {
-            const firstCurrency = Object.keys(ratesData.rates)[0] || "";
-            setCurrency(firstCurrency);
+            setCurrency(Object.keys(ratesData.rates)[0] || "");
         }
     }, [ratesData]);
 
@@ -40,7 +39,7 @@ function Form() {
             return;
         }
 
-        const finalResult = amount / ratesData.rates[currency].value;
+        const finalResult = amount * ratesData.rates[currency].value;
 
         setResult({
             amount: +amount,
